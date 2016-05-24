@@ -4,11 +4,13 @@ dropwizard-version
 
 dropwizard-version is a Dropwizard bundle that adds an endpoint for easily checking the application version at runtime. This utilizes [java-versioneer](https://github.com/jacob-meacham/java-versioneer) to supply the version.
 
+This project works with Dropwizard 0.9.2+.
+
 Quick Start
 -----------
 If you're using gradle, to your build.gradle, add
 ```
-compile 'com.jemonjam.dropwizard:dropwizard-version:0.1.0'
+compile 'com.jemonjam.dropwizard:dropwizard-version:0.9.2-0'
 ```
 
 If you're using maven, to you pom.xml, add
@@ -16,7 +18,7 @@ If you're using maven, to you pom.xml, add
 <dependency>
   <groupId>com.jemonjam.dropwizard</groupId>
   <artifactId>dropwizard-version</artifactId>
-  <version>0.1.0</version>
+  <version>0.9.2-0</version>
   <type>pom</type>
 </dependency>
 ```

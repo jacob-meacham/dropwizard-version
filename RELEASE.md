@@ -1,3 +1,3 @@
-0.1.0
+0.9.2-0
 -----
-* Initial version
+* Initial version working against Dropwizard 0.9.2
