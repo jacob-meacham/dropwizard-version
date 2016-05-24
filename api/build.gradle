@@ -1,0 +1,9 @@
+dependencies {
+    compile group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: jaxrsVersion
+}
+
+eclipse {
+    project {
+        name = 'dropwizard-version-api'
+    }
+}

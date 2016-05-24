@@ -1,0 +1,45 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.palantir:gradle-baseline-java:$baselineVersion"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintrayVersion"
+    }
+}
+
+plugins {
+    id 'com.palantir.git-version' version '0.4.0'
+}
+
+apply plugin: 'com.palantir.baseline-config'
+
+allprojects {
+    group 'com.jemonjam.dropwizard'
+    version gitVersion()
+
+    repositories {
+        jcenter()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'com.palantir.baseline-checkstyle'
+    apply plugin: 'com.palantir.baseline-eclipse'
+    apply plugin: 'com.palantir.baseline-findbugs'
+    apply plugin: 'com.palantir.baseline-idea'
+
+    apply from: "${rootDir}/gradle/publish.gradle"
+
+    findbugsMain {
+        reports {
+            xml.enabled = true
+            html.enabled = false
+        }
+    }
+
+    sourceCompatibility = 1.8
+}
+
