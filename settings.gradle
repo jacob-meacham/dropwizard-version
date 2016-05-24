@@ -1,2 +1,7 @@
-include "api"
-include "main"
+rootProject.name = 'dropwizard-version'
+
+include 'api'
+include 'main'
+
+project(':api').name = 'dropwizard-version-api'
+project(':main').name = 'dropwizard-version'
