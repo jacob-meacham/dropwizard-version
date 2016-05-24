@@ -1,15 +1,9 @@
 dependencies {
-    compile project(':api')
+    compile project(':dropwizard-version-api')
     compile "io.dropwizard:dropwizard-core:$dropwizardVersion"
     compile 'com.jemonjam.versioneer:java-versioneer:0.3.0'
     compile 'com.google.guava:guava:19.0'
 
     compile 'com.google.code.findbugs:jsr305:3.0.1'
     compile 'com.sharneng:jsr305defaults:2.0.3'
-}
-
-eclipse {
-    project {
-        name = 'dropwizard-version'
-    }
 }

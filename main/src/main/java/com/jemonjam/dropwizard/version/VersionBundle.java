@@ -42,10 +42,11 @@ public class VersionBundle implements Bundle {
     @Override
     public final void run(Environment environment) {
         if (isAdmin) {
+            // TODO: Bind the endpoint to something more reasonable than /version/version
             final DropwizardResourceConfig jerseyConfig = new DropwizardResourceConfig(environment.metrics());
             JerseyContainerHolder jerseyContainerHolder = new JerseyContainerHolder(new ServletContainer(jerseyConfig));
             jerseyConfig.register(new VersionResource(locator));
-            environment.admin().addServlet("version", jerseyContainerHolder.getContainer()).addMapping("/");
+            environment.admin().addServlet("version", jerseyContainerHolder.getContainer()).addMapping("/version/*");
         } else {
             environment.jersey().register(new VersionResource(locator));
         }

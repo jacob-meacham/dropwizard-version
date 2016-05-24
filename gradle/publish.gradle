@@ -14,22 +14,33 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
 
 tasks.build.dependsOn sourceJar, javadocJar
 
-bintray {
-    user = System.getenv('BINTRAY_USER')
-    key = System.getenv('BINTRAY_KEY')
-    publications = ['bintray']
-    pkg {
-        repo = 'maven'
-        name = 'dropwizard-version'
-        licenses = ['MIT']
-        vcsUrl = 'https://github.com/jacob-meacham/dropwizard-version.git'
-        version {
-            name = gitVersion()
-            released  = new Date()
-            vcsTag = gitVersion()
-            description 'dropwizard-version is a Dropwizard bundle that adds an endpoint for easily checking the application version at runtime.'
+publishing {
+    publications {
+        bintray(MavenPublication) {
+            from components.java
+            artifact(sourceJar)
+            artifact(javadocJar)
+            version project.version
         }
     }
 }
 
-bintrayUpload.dependsOn 'generatePomFileForBintrayPublication', 'build'
+// bintray {
+//     user = System.getenv('BINTRAY_USER')
+//     key = System.getenv('BINTRAY_KEY')
+//     publications = ['bintray']
+//     pkg {
+//         repo = 'maven'
+//         name = 'dropwizard-version'
+//         licenses = ['MIT']
+//         vcsUrl = 'https://github.com/jacob-meacham/dropwizard-version.git'
+//         version {
+//             name = gitVersion()
+//             released  = new Date()
+//             vcsTag = gitVersion()
+//             description 'dropwizard-version is a Dropwizard bundle that adds an endpoint for easily checking the application version at runtime.'
+//         }
+//     }
+// }
+
+// bintrayUpload.dependsOn 'generatePomFileForBintrayPublication', 'build'
